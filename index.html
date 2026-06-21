@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+  <meta name="theme-color" content="#7c5cfc">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="PropertyPulse">
+  <meta name="description" content="Smart real estate follow-up tracker">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <title>PropertyPulse</title>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!--  TOP APP BAR                                -->
+  <!-- ═══════════════════════════════════════════ -->
+  <header class="top-bar" id="topBar">
+    <div class="top-bar__inner">
+      <div class="top-bar__left">
+        <span class="top-bar__logo">⚡</span>
+        <h1 class="top-bar__title">PropertyPulse</h1>
+      </div>
+      <div class="top-bar__right">
+        <button class="top-bar__icon-btn" id="btnSearch" aria-label="Search">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!--  MAIN CONTENT AREA                          -->
+  <!-- ═══════════════════════════════════════════ -->
+  <main class="app-content" id="appContent">
+
+    <!-- ─── VIEW: HOME / DASHBOARD ─── -->
+    <section class="view view--active" id="viewHome" data-view="home">
+      <div class="view__scroll">
+
+        <!-- Greeting -->
+        <div class="greeting" id="greeting">
+          <h2 class="greeting__text">Good Evening 🌙</h2>
+          <p class="greeting__sub">Here's your follow-up pulse</p>
+        </div>
+
+        <!-- Stat Cards Row -->
+        <div class="stats-row">
+          <div class="stat-card stat-card--today">
+            <div class="stat-card__icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <span class="stat-card__number" id="statToday" data-count="0">0</span>
+            <span class="stat-card__label">Today</span>
+          </div>
+          <div class="stat-card stat-card--tomorrow">
+            <div class="stat-card__icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
+            </div>
+            <span class="stat-card__number" id="statTomorrow" data-count="0">0</span>
+            <span class="stat-card__label">Tomorrow</span>
+          </div>
+          <div class="stat-card stat-card--total">
+            <div class="stat-card__icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <span class="stat-card__number" id="statTotal" data-count="0">0</span>
+            <span class="stat-card__label">Total</span>
+          </div>
+        </div>
+
+        <!-- Weekly Heatmap -->
+        <div class="section-block">
+          <h3 class="section-title">Weekly Pulse</h3>
+          <div class="heatmap" id="weeklyHeatmap">
+            <div class="heatmap__day" data-day="SUN"><span class="heatmap__label">S</span><div class="heatmap__bar"><div class="heatmap__fill" data-intensity="0"></div></div><span class="heatmap__count">0</span></div>
+            <div class="heatmap__day" data-day="MON"><span class="heatmap__label">M</span><div class="heatmap__bar"><div class="heatmap__fill" data-intensity="0"></div></div><span class="heatmap__count">0</span></div>
+            <div class="heatmap__day" data-day="TUE"><span class="heatmap__label">T</span><div class="heatmap__bar"><div class="heatmap__fill" data-intensity="0"></div></div><span class="heatmap__count">0</span></div>
+            <div class="heatmap__day" data-day="WED"><span class="heatmap__label">W</span><div class="heatmap__bar"><div class="heatmap__fill" data-intensity="0"></div></div><span class="heatmap__count">0</span></div>
+            <div class="heatmap__day" data-day="THU"><span class="heatmap__label">T</span><div class="heatmap__bar"><div class="heatmap__fill" data-intensity="0"></div></div><span class="heatmap__count">0</span></div>
+            <div class="heatmap__day" data-day="FRI"><span class="heatmap__label">F</span><div class="heatmap__bar"><div class="heatmap__fill" data-intensity="0"></div></div><span class="heatmap__count">0</span></div>
+            <div class="heatmap__day" data-day="SAT"><span class="heatmap__label">S</span><div class="heatmap__bar"><div class="heatmap__fill" data-intensity="0"></div></div><span class="heatmap__count">0</span></div>
+          </div>
+        </div>
+
+        <!-- Today's Follow-ups -->
+        <div class="section-block">
+          <div class="section-header">
+            <h3 class="section-title">Today's Follow-ups</h3>
+            <span class="section-badge" id="todayBadge">0</span>
+          </div>
+          <div class="client-list" id="todayList">
+            <!-- Client cards injected by JS -->
+            <div class="empty-state" id="emptyToday">
+              <span class="empty-state__emoji">🎉</span>
+              <p class="empty-state__text">No follow-ups today!</p>
+              <p class="empty-state__sub">Enjoy your free time</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tomorrow's Reminders -->
+        <div class="section-block">
+          <div class="section-header">
+            <h3 class="section-title">Tomorrow's Reminders</h3>
+            <span class="section-badge" id="tomorrowBadge">0</span>
+          </div>
+          <div class="client-list" id="tomorrowList">
+            <div class="empty-state" id="emptyTomorrow">
+              <span class="empty-state__emoji">📋</span>
+              <p class="empty-state__text">Nothing scheduled</p>
+              <p class="empty-state__sub">Tap + to add a client</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- FAB -->
+      <button class="fab" id="fabAdd" aria-label="Add new client">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+    </section>
+
+    <!-- ─── VIEW: ALL CLIENTS ─── -->
+    <section class="view" id="viewClients" data-view="clients">
+      <div class="view__scroll">
+
+        <!-- Search Bar -->
+        <div class="search-bar-wrap">
+          <div class="search-bar">
+            <svg class="search-bar__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" class="search-bar__input" id="searchInput" placeholder="Search clients or properties…" autocomplete="off">
+            <button class="search-bar__clear hidden" id="searchClear" aria-label="Clear search">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Filter Chips -->
+        <div class="filter-chips" id="filterChips">
+          <button class="chip chip--active" data-filter="all">All</button>
+          <button class="chip" data-filter="high">🔴 High</button>
+          <button class="chip" data-filter="medium">🟡 Medium</button>
+          <button class="chip" data-filter="low">🟢 Low</button>
+          <button class="chip" data-filter="active">Active</button>
+          <button class="chip" data-filter="closed">Closed</button>
+        </div>
+
+        <!-- Client List -->
+        <div class="client-list" id="allClientsList">
+          <div class="empty-state" id="emptyClients">
+            <span class="empty-state__emoji">👤</span>
+            <p class="empty-state__text">No clients yet</p>
+            <p class="empty-state__sub">Tap the + button to add your first client</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─── VIEW: REMINDERS ─── -->
+    <section class="view" id="viewReminders" data-view="reminders">
+      <div class="view__scroll">
+
+        <!-- Reminder Tabs -->
+        <div class="reminder-tabs" id="reminderTabs">
+          <button class="reminder-tab reminder-tab--active" data-rtab="today">Today</button>
+          <button class="reminder-tab" data-rtab="tomorrow">Tomorrow</button>
+          <button class="reminder-tab" data-rtab="week">This Week</button>
+        </div>
+
+        <!-- Reminder Content -->
+        <div class="reminder-content" id="reminderContent">
+          <div class="client-list" id="reminderList">
+            <div class="empty-state" id="emptyReminders">
+              <span class="empty-state__emoji">🔔</span>
+              <p class="empty-state__text">No reminders</p>
+              <p class="empty-state__sub">You're all caught up!</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!--  ADD / EDIT CLIENT MODAL                    -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal" id="clientModal">
+
+      <!-- Drag Handle -->
+      <div class="modal__handle-wrap">
+        <div class="modal__handle"></div>
+      </div>
+
+      <!-- Modal Header -->
+      <div class="modal__header">
+        <h2 class="modal__title" id="modalTitle">Add Client</h2>
+        <button class="modal__close" id="modalClose" aria-label="Close modal">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <!-- Modal Body / Form -->
+      <form class="modal__form" id="clientForm" autocomplete="off">
+        <input type="hidden" id="editClientId" value="">
+
+        <!-- Client Name -->
+        <div class="form-group">
+          <div class="input-wrap">
+            <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <input type="text" class="form-input" id="inputName" placeholder=" " required>
+            <label class="form-label" for="inputName">Client Name</label>
+          </div>
+        </div>
+
+        <!-- Phone -->
+        <div class="form-group">
+          <div class="input-wrap">
+            <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <input type="tel" class="form-input" id="inputPhone" placeholder=" " required>
+            <label class="form-label" for="inputPhone">Phone Number</label>
+          </div>
+        </div>
+
+        <!-- Property Name -->
+        <div class="form-group">
+          <div class="input-wrap">
+            <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <input type="text" class="form-input" id="inputProperty" placeholder=" " required>
+            <label class="form-label" for="inputProperty">Property Name</label>
+          </div>
+        </div>
+
+        <!-- Two-column row: Type + Budget -->
+        <div class="form-row">
+          <div class="form-group form-group--half">
+            <div class="input-wrap">
+              <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/></svg>
+              <select class="form-input form-select" id="inputType" required>
+                <option value="" disabled selected></option>
+                <option value="Apartment">Apartment</option>
+                <option value="Villa">Villa</option>
+                <option value="Plot">Plot</option>
+                <option value="Commercial">Commercial</option>
+                <option value="Penthouse">Penthouse</option>
+                <option value="Farmhouse">Farmhouse</option>
+                <option value="Other">Other</option>
+              </select>
+              <label class="form-label form-label--select" for="inputType">Type</label>
+            </div>
+          </div>
+          <div class="form-group form-group--half">
+            <div class="input-wrap">
+              <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              <input type="text" class="form-input" id="inputBudget" placeholder=" ">
+              <label class="form-label" for="inputBudget">Budget</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Status -->
+        <div class="form-group">
+          <div class="input-wrap">
+            <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
+            <select class="form-input form-select" id="inputStatus" required>
+              <option value="" disabled selected></option>
+              <option value="New Lead">New Lead</option>
+              <option value="Contacted">Contacted</option>
+              <option value="Interested">Interested</option>
+              <option value="Site Visit">Site Visit</option>
+              <option value="Negotiation">Negotiation</option>
+              <option value="Closed Won">Closed Won</option>
+              <option value="Closed Lost">Closed Lost</option>
+            </select>
+            <label class="form-label form-label--select" for="inputStatus">Status</label>
+          </div>
+        </div>
+
+        <!-- Follow-up Days Selector -->
+        <div class="form-group">
+          <label class="form-group__label">Follow-up Days</label>
+          <div class="day-selector" id="daySelector">
+            <button type="button" class="day-btn" data-day="0">SUN</button>
+            <button type="button" class="day-btn" data-day="1">MON</button>
+            <button type="button" class="day-btn" data-day="2">TUE</button>
+            <button type="button" class="day-btn" data-day="3">WED</button>
+            <button type="button" class="day-btn" data-day="4">THU</button>
+            <button type="button" class="day-btn" data-day="5">FRI</button>
+            <button type="button" class="day-btn" data-day="6">SAT</button>
+          </div>
+        </div>
+
+        <!-- Priority Selector -->
+        <div class="form-group">
+          <label class="form-group__label">Priority</label>
+          <div class="priority-selector" id="prioritySelector">
+            <label class="priority-card priority-card--high">
+              <input type="radio" name="priority" value="high">
+              <span class="priority-card__dot"></span>
+              <span class="priority-card__text">High</span>
+            </label>
+            <label class="priority-card priority-card--medium">
+              <input type="radio" name="priority" value="medium" checked>
+              <span class="priority-card__dot"></span>
+              <span class="priority-card__text">Medium</span>
+            </label>
+            <label class="priority-card priority-card--low">
+              <input type="radio" name="priority" value="low">
+              <span class="priority-card__dot"></span>
+              <span class="priority-card__text">Low</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Notes -->
+        <div class="form-group">
+          <div class="input-wrap">
+            <svg class="input-icon input-icon--textarea" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
+            <textarea class="form-input form-textarea" id="inputNotes" placeholder=" " rows="3"></textarea>
+            <label class="form-label" for="inputNotes">Notes</label>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn-submit" id="btnSubmit">
+          <span class="btn-submit__text">Save Client</span>
+          <span class="btn-submit__loader hidden">
+            <span class="spinner"></span>
+          </span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!--  DELETE CONFIRMATION DIALOG                 -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="confirm-overlay" id="confirmOverlay">
+    <div class="confirm-dialog">
+      <div class="confirm-dialog__icon">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#ff4757" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
+      </div>
+      <h3 class="confirm-dialog__title">Delete Client?</h3>
+      <p class="confirm-dialog__text">This action cannot be undone. All follow-up data will be permanently removed.</p>
+      <div class="confirm-dialog__actions">
+        <button class="confirm-btn confirm-btn--cancel" id="confirmCancel">Cancel</button>
+        <button class="confirm-btn confirm-btn--delete" id="confirmDelete">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!--  BOTTOM NAVIGATION                          -->
+  <!-- ═══════════════════════════════════════════ -->
+  <nav class="bottom-nav" id="bottomNav">
+    <button class="nav-item nav-item--active" data-target="home" aria-label="Home">
+      <span class="nav-item__indicator"></span>
+      <svg class="nav-item__icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <span class="nav-item__label">Home</span>
+    </button>
+    <button class="nav-item" data-target="clients" aria-label="Clients">
+      <span class="nav-item__indicator"></span>
+      <svg class="nav-item__icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      <span class="nav-item__label">Clients</span>
+    </button>
+    <button class="nav-item nav-item--add" data-target="add" aria-label="Add Client">
+      <span class="nav-item__add-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </span>
+      <span class="nav-item__label">Add</span>
+    </button>
+    <button class="nav-item" data-target="reminders" aria-label="Reminders">
+      <span class="nav-item__indicator"></span>
+      <svg class="nav-item__icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+      <span class="nav-item__label">Reminders</span>
+    </button>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!--  TOAST NOTIFICATIONS                        -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!--  CLIENT CARD TEMPLATE (hidden)              -->
+  <!-- ═══════════════════════════════════════════ -->
+  <template id="tplClientCard">
+    <article class="client-card" data-id="" data-priority="">
+      <div class="client-card__priority-bar"></div>
+      <div class="client-card__body">
+        <div class="client-card__header">
+          <div class="client-card__info">
+            <h4 class="client-card__name"></h4>
+            <p class="client-card__property">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              <span class="client-card__property-text"></span>
+            </p>
+          </div>
+          <div class="client-card__status-pill">
+            <span class="status-dot"></span>
+            <span class="status-text"></span>
+          </div>
+        </div>
+
+        <!-- Tags row -->
+        <div class="client-card__tags">
+          <span class="tag tag--phone">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span class="tag__text"></span>
+          </span>
+          <span class="tag tag--type">
+            <span class="tag__text"></span>
+          </span>
+          <span class="tag tag--budget">
+            <span class="tag__text"></span>
+          </span>
+        </div>
+
+        <!-- Follow-up Days -->
+        <div class="client-card__days"></div>
+
+        <!-- Notes (expandable) -->
+        <div class="client-card__notes hidden">
+          <p class="client-card__notes-text"></p>
+        </div>
+
+        <!-- Actions -->
+        <div class="client-card__actions">
+          <button class="action-btn action-btn--call" aria-label="Call" data-action="call">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span>Call</span>
+          </button>
+          <button class="action-btn action-btn--whatsapp" aria-label="WhatsApp" data-action="whatsapp">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            <span>WhatsApp</span>
+          </button>
+          <button class="action-btn action-btn--edit" aria-label="Edit" data-action="edit">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
+            <span>Edit</span>
+          </button>
+          <button class="action-btn action-btn--notes" aria-label="Notes" data-action="notes">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+            <span>Notes</span>
+          </button>
+          <button class="action-btn action-btn--delete" aria-label="Delete" data-action="delete">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>
+            <span>Delete</span>
+          </button>
+        </div>
+      </div>
+    </article>
+  </template>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
